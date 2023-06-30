@@ -276,7 +276,7 @@ class WeatherCard extends StatelessWidget {
                   "London",
                   style: GoogleFonts.poppins(
                     color: Colors.white,
-                    fontSize: size.width * 0.04,
+                    fontSize: size.width * 0.03,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -291,11 +291,25 @@ class WeatherCard extends StatelessWidget {
                   '27°C',
                   style: GoogleFonts.poppins(
                     color: Colors.white,
-                    fontSize: size.width * 0.04,
+                    fontSize: size.width * 0.02,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
                 Image.asset('assets/Cloud2.png'),
+              ],
+            ),
+            Row(
+              children: [
+                Text(
+                  'Aug 23, Tue',
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: size.width * 0.015,
+                    fontWeight: FontWeight.w400,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Colors.white,
+                  ),
+                ),
               ],
             )
           ],
