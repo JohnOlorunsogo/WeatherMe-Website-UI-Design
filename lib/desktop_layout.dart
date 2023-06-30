@@ -102,8 +102,7 @@ class DesktopLayout extends StatelessWidget {
                 ],
               ),
 
-//search bar
-
+              //search bar
               Container(
                 width: size.width * 0.52,
                 height: size.width * 0.048,
@@ -154,11 +153,15 @@ class DesktopLayout extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   children: [
                     WeatherCard(size: size),
-                    // SizedBox(width: size.width * 0.001),
                     WeatherCard(size: size),
                     WeatherCard(size: size),
                   ],
                 ),
+
+                //time weather data
+              ),
+              const Row(
+                children: [],
               )
             ],
           )
@@ -261,6 +264,39 @@ class WeatherCard extends StatelessWidget {
               blurRadius: size.width * 0.003,
               offset: Offset(0, size.width * 0.003),
               spreadRadius: 0,
+            )
+          ],
+        ),
+
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Text(
+                  "London",
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: size.width * 0.04,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                const Icon(Icons.location_on_outlined,
+                    color: Colors.white, size: 20),
+              ],
+            ),
+            Row(
+              children: [
+                Image.asset('assets/🦆 icon _temperature_.png'),
+                Text(
+                  '27°C',
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: size.width * 0.04,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Image.asset('assets/Cloud2.png'),
+              ],
             )
           ],
         ),
