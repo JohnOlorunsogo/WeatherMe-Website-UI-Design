@@ -88,7 +88,7 @@ class DesktopLayout extends StatelessWidget {
                             child: Text(
                               'Tomorrow',
                               style: GoogleFonts.poppins(
-                                color: Colors.white,
+                                color: Colors.white54,
                                 fontSize: size.width * 0.022,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -100,7 +100,7 @@ class DesktopLayout extends StatelessWidget {
                             child: Text(
                               'Monthly Forecast',
                               style: GoogleFonts.poppins(
-                                color: Colors.white,
+                                color: Colors.white54,
                                 fontSize: size.width * 0.022,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -188,7 +188,7 @@ class DesktopLayout extends StatelessWidget {
                         pageController: pageController,
                         size: size,
                         weather: Weather(
-                          city: 'New York',
+                          city: 'Sydney',
                           temperature: 27,
                           humidity: 99,
                           windSpeed: 2,
@@ -216,7 +216,7 @@ class DesktopLayout extends StatelessWidget {
                         pageController: pageController,
                         size: size,
                         weather: Weather(
-                          city: 'New York',
+                          city: 'London',
                           temperature: 27,
                           humidity: 99,
                           windSpeed: 2,
@@ -224,8 +224,8 @@ class DesktopLayout extends StatelessWidget {
                           airPressure: 1005,
                         ),
                         gradientColors: const [
-                          Color.fromARGB(255, 64, 68, 39),
-                          Color(0xff270F94),
+                          Color.fromARGB(255, 106, 122, 8),
+                          Color.fromARGB(255, 132, 106, 250),
                         ],
                       ),
                     ],
@@ -273,7 +273,8 @@ class DesktopLayout extends StatelessWidget {
                       temperature: '27°',
                     ),
                   ],
-                )
+                ),
+                SizedBox(height: size.width * 0.03),
               ],
             ),
           ),
@@ -331,48 +332,52 @@ class TempUnitSwitch extends StatefulWidget {
 class _TempUnitSwitchState extends State<TempUnitSwitch> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedToggleSwitch<TempUnit>.dual(
-      current: widget.tempUnit,
-      first: TempUnit.fahrenheit,
-      second: TempUnit.celsius,
-      dif: 1.0,
-      borderColor: Colors.transparent,
-      borderWidth: 5.0,
-      height: 30,
-      boxShadow: const [
-        BoxShadow(
-          color: Colors.black26,
-          spreadRadius: 1,
-          blurRadius: 2,
-          offset: Offset(0, 1.5),
-        ),
-      ],
-      onChanged: (b) {
-        setState(() => widget.tempUnit = b);
-        // return Future.delayed(const Duration(seconds: 1));
-      },
-      colorBuilder: (b) => b == TempUnit.celsius
-          ? const Color.fromARGB(255, 1, 47, 84)
-          : const Color.fromARGB(255, 0, 51, 2),
-      iconBuilder: (value) => value == TempUnit.celsius
-          ? SvgPicture.asset(
-              'assets/°C.svg',
-              height: 10,
-              width: 18,
-            )
-          : SvgPicture.asset(
-              'assets/°F.svg',
-              height: 10,
-              width: 18,
-            ),
-      textBuilder: (value) => value == TempUnit.celsius
-          ? const Center(
-              child: Text(
-                '°F',
-                style: TextStyle(color: Colors.black, fontSize: 12),
+    return Padding(
+      padding: const EdgeInsets.only(left: 20.0),
+      child: AnimatedToggleSwitch<TempUnit>.dual(
+        innerColor: Colors.green[400],
+        current: widget.tempUnit,
+        first: TempUnit.fahrenheit,
+        second: TempUnit.celsius,
+        dif: 1.0,
+        borderColor: Colors.transparent,
+        borderWidth: 5.0,
+        height: 30,
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            spreadRadius: 1,
+            blurRadius: 2,
+            offset: Offset(0, 1.5),
+          ),
+        ],
+        onChanged: (b) {
+          setState(() => widget.tempUnit = b);
+          // return Future.delayed(const Duration(seconds: 1));
+        },
+        colorBuilder: (b) => b == TempUnit.celsius
+            ? const Color.fromARGB(255, 1, 47, 84)
+            : const Color.fromARGB(255, 0, 51, 2),
+        iconBuilder: (value) => value == TempUnit.celsius
+            ? SvgPicture.asset(
+                'assets/°C.svg',
+                height: 10,
+                width: 18,
+              )
+            : SvgPicture.asset(
+                'assets/°F.svg',
+                height: 10,
+                width: 18,
               ),
-            )
-          : const Center(child: Text('°C')),
+        textBuilder: (value) => value == TempUnit.celsius
+            ? const Center(
+                child: Text(
+                  '°F',
+                  style: TextStyle(color: Colors.black, fontSize: 12),
+                ),
+              )
+            : const Center(child: Text('°C')),
+      ),
     );
   }
 }
@@ -382,7 +387,7 @@ class WeatherCard extends StatelessWidget {
     required this.size,
     required this.weather,
     required this.pageController,
-    this.gradientColors = const [Color(0xFFAD36CB), Color(0xFF323233)],
+    this.gradientColors = const [Colors.deepPurple, Color(0xFF323233)],
     super.key,
   });
   final Size size;
@@ -660,7 +665,7 @@ class TimeWeatherCard extends StatelessWidget {
               gradient: const LinearGradient(
                 begin: Alignment(0.00, -1.00),
                 end: Alignment(0, 1),
-                colors: [Color(0xFFB32DD4), Color(0x00D9D9D9)],
+                colors: [Colors.deepPurple, Color(0x00D9D9D9)],
               ),
               shape: RoundedRectangleBorder(
                 side: const BorderSide(width: 0.50),
