@@ -24,192 +24,285 @@ class DesktopLayout extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                // crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Column(
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+          Positioned(
+            top: size.width * 0.004,
+            left: size.width * 0.004,
+            child: Image.asset(
+              'assets/cloud and sun.png',
+              height: size.width * 0.06,
+            ),
+          ),
+
+          SingleChildScrollView(
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 18),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        'WeatherMe',
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: size.width * 0.051,
-                          fontWeight: FontWeight.w400,
-                        ),
+                      SizedBox(width: size.width * 0.03),
+                      Column(
+                        // mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            'WeatherMe',
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: size.width * 0.051,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text(
+                            '21:00pm',
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: size.width * 0.014,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          )
+                        ],
                       ),
-                      Text(
-                        '21:00pm',
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: size.width * 0.014,
-                          fontWeight: FontWeight.w400,
-                        ),
+                      SizedBox(width: size.width * 0.05),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Today',
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: size.width * 0.022,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: size.width * 0.03),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Tomorrow',
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: size.width * 0.022,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: size.width * 0.03),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Monthly Forecast',
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: size.width * 0.022,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                          // SizedBox(width: size.width * 0.03),
+                        ],
                       )
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Today',
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontSize: size.width * 0.022,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: size.width * 0.05),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Tomorrow',
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontSize: size.width * 0.022,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: size.width * 0.05),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Monthly Forecast',
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontSize: size.width * 0.022,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: size.width * 0.05),
-                    ],
-                  )
-                ],
-              ),
-
-              //unit switch
-              Row(
-                children: [
-                  TempUnitSwitch(),
-                ],
-              ),
-
-              //search bar
-              Container(
-                width: size.width * 0.52,
-                height: size.width * 0.048,
-                decoration: ShapeDecoration(
-                  color: const Color(0xFFD9D9D9),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(size.width * 0.0183),
-                  ),
                 ),
-                child: Center(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: size.width * 0.01,
-                    ),
-                    child: TextField(
-                      style: GoogleFonts.poppins(
-                        color: Colors.black,
-                        fontSize: size.width * 0.018,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                        ),
-                        prefixIcon: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: size.width * 0.01,
-                            horizontal: size.width * 0.015,
-                          ),
-                          child: Image.asset(
-                            'assets/🦆 icon _search_.png',
-                            // height: 1,
-                            // width: size.width * 0.0007,
-                          ),
-                        ),
-                        contentPadding: EdgeInsets.only(
-                          left: size.width * 0.02,
-                          right: size.width * 0.02,
-                          // top: size.width * 0.0183,
-                          bottom: size.width * 0.0183,
-                        ),
-                        hintText: 'Search location...',
-                        hintStyle: GoogleFonts.poppins(
-                          color: Colors.black,
-                          fontSize: size.width * 0.022,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
 
-              //weather card
-              SizedBox(height: size.width * 0.03),
-
-              SizedBox(
-                width: size.width,
-                height: size.width * 0.3257,
-                child: PageView(
-                  controller: pageController,
-                  scrollDirection: Axis.horizontal,
+                //unit switch
+                Row(
                   children: [
-                    WeatherCard(
-                      size: size,
-                      weather: Weather(
-                        city: 'New York',
-                        temperature: 27,
-                        humidity: 99,
-                        windSpeed: 2,
-                        visibility: 8,
-                        airPressure: 1005,
-                      ),
-                    ),
-                    WeatherCard(
-                      size: size,
-                      weather: Weather(
-                        city: 'New York',
-                        temperature: 27,
-                        humidity: 99,
-                        windSpeed: 2,
-                        visibility: 8,
-                        airPressure: 1005,
-                      ),
-                    ),
-                    WeatherCard(
-                      size: size,
-                      weather: Weather(
-                        city: 'New York',
-                        temperature: 27,
-                        humidity: 99,
-                        windSpeed: 2,
-                        visibility: 8,
-                        airPressure: 1005,
-                      ),
-                    ),
+                    TempUnitSwitch(),
                   ],
                 ),
+                SizedBox(height: size.width * 0.03),
+                //search bar
+                Container(
+                  width: size.width * 0.52,
+                  height: size.width * 0.048,
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFD9D9D9),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(size.width * 0.0183),
+                    ),
+                  ),
+                  child: Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: size.width * 0.01,
+                      ),
+                      child: TextField(
+                        style: GoogleFonts.poppins(
+                          color: Colors.black,
+                          fontSize: size.width * 0.018,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                          ),
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: size.width * 0.01,
+                              horizontal: size.width * 0.015,
+                            ),
+                            child: Image.asset(
+                              'assets/🦆 icon _search_.png',
+                              // height: 1,
+                              // width: size.width * 0.0007,
+                            ),
+                          ),
+                          contentPadding: EdgeInsets.only(
+                            left: size.width * 0.02,
+                            right: size.width * 0.02,
+                            // top: size.width * 0.0183,
+                            bottom: size.width * 0.0183,
+                          ),
+                          hintText: 'Search location...',
+                          hintStyle: GoogleFonts.poppins(
+                            color: Colors.black,
+                            fontSize: size.width * 0.022,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
 
+                //weather card
+                SizedBox(height: size.width * 0.03),
+
+                SizedBox(
+                  width: size.width,
+                  height: size.width * 0.3257,
+                  child: PageView(
+                    controller: pageController,
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      WeatherCard(
+                        size: size,
+                        weather: Weather(
+                          city: 'New York',
+                          temperature: 27,
+                          humidity: 99,
+                          windSpeed: 2,
+                          visibility: 8,
+                          airPressure: 1005,
+                        ),
+                      ),
+                      WeatherCard(
+                        size: size,
+                        weather: Weather(
+                          city: 'New York',
+                          temperature: 27,
+                          humidity: 99,
+                          windSpeed: 2,
+                          visibility: 8,
+                          airPressure: 1005,
+                        ),
+                      ),
+                      WeatherCard(
+                        size: size,
+                        weather: Weather(
+                          city: 'New York',
+                          temperature: 27,
+                          humidity: 99,
+                          windSpeed: 2,
+                          visibility: 8,
+                          airPressure: 1005,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                SizedBox(height: size.width * 0.03),
                 //time weather data
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    TimeWeatherCard(
+                      icon: 'assets/cloud and rain.png',
+                      time: '19:00 pm',
+                      temperature: '29°',
+                    ),
+                    TimeWeatherCard(
+                      icon: 'assets/cloud and rain.png',
+                      time: '21:00 pm',
+                      temperature: '27°',
+                    ),
+                    TimeWeatherCard(
+                      icon: 'assets/Cloud2.png',
+                      time: '23:00 pm',
+                      temperature: '27°',
+                    ),
+                    TimeWeatherCard(
+                      icon: 'assets/cloud and light.png',
+                      time: '1:00 am',
+                      temperature: '26°',
+                    ),
+                    TimeWeatherCard(
+                      icon: 'assets/cloud and storm.png',
+                      time: '3:00 am',
+                      temperature: '29°',
+                    ),
+                    TimeWeatherCard(
+                      icon: 'assets/cloud and storm.png',
+                      time: '5:00 am',
+                      temperature: '31°',
+                    ),
+                    TimeWeatherCard(
+                      icon: 'assets/cloud and sun.png',
+                      time: '7:00 am',
+                      temperature: '27°',
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+
+          //page view buttons
+
+          Positioned(
+            top: size.width * 0.42,
+            left: size.width * 0.13,
+            child: IconButton(
+              onPressed: () {
+                pageController.previousPage(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.easeInOut,
+                );
+              },
+              icon: Icon(
+                Icons.arrow_back_ios_new_outlined,
+                color: Colors.black,
+                size: size.width * 0.055,
               ),
-              const Row(
-                children: [],
-              )
-            ],
-          )
+            ),
+          ),
+          Positioned(
+            top: size.width * 0.42,
+            right: size.width * 0.13,
+            child: IconButton(
+              onPressed: () {
+                pageController.nextPage(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.easeInOut,
+                );
+              },
+              icon: Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: Colors.black,
+                size: size.width * 0.055,
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -475,6 +568,116 @@ class WeatherCard extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class TimeWeatherCard extends StatelessWidget {
+  const TimeWeatherCard({
+    required this.time,
+    required this.icon,
+    required this.temperature,
+    this.iconSize = 0.05,
+    super.key,
+  });
+  final String time;
+  final String icon;
+  final String temperature;
+  final double iconSize;
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return SizedBox(
+      height: size.width * 0.1,
+      child: Stack(
+        // alignment: Alignment.center,
+        children: [
+          Container(
+            width: size.width * 0.0886,
+            height: size.width * 0.0886,
+            decoration: ShapeDecoration(
+              gradient: const LinearGradient(
+                begin: Alignment(0.00, -1.00),
+                end: Alignment(0, 1),
+                colors: [Color(0xFFB32DD4), Color(0x00D9D9D9)],
+              ),
+              shape: RoundedRectangleBorder(
+                side: const BorderSide(width: 0.50),
+                borderRadius: BorderRadius.circular(
+                  size.width * 0.0183,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: size.width * 0.0432,
+            // bottom: (size.width * 0.00952),
+            child: Container(
+              width: size.width * 0.0886,
+              height: size.width * 0.0527,
+              decoration: ShapeDecoration(
+                gradient: const LinearGradient(
+                  begin: Alignment(-0.96, 0.30),
+                  end: Alignment(0.96, -0.3),
+                  colors: [Color(0xFF373232), Color.fromARGB(98, 55, 50, 50)],
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                    size.width * 0.0183,
+                  ),
+                ),
+                shadows: const [
+                  BoxShadow(
+                    color: Color.fromARGB(62, 0, 0, 0),
+                    blurRadius: 0,
+                    offset: Offset(1, 2),
+                    spreadRadius: 0,
+                  )
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: size.width * 0.023,
+            left: 0,
+            right: 0,
+            child: Image.asset(icon, height: size.width * 0.05),
+          ),
+          Positioned(
+            top: size.width * 0.01,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Text(
+                time,
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: size.width * 0.0124,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            top: size.width * 0.074,
+            // left: size.width * 0.018,
+            // right: ,
+            child: Center(
+              child: Text(
+                temperature,
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: size.width * 0.0154,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
