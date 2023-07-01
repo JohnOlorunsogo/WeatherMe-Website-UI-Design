@@ -1,16 +1,16 @@
-# weatherme_website
+# WeatherMe Website
 
-A new Flutter project.
+A simple weather website UI Design
 
-## Getting Started
+![alt text](https://github.com/JohnOlorunsogo/WeatherMe-Website-UI-Design/blob/cbb53c86ba36daf30aefce2f7d3609915ee87656/assets/showcase.png)
 
-This project is a starting point for a Flutter application.
+![alt text](https://github.com/JohnOlorunsogo/WeatherMe-Website-UI-Design/blob/cbb53c86ba36daf30aefce2f7d3609915ee87656/assets/showcase2.png)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+
+[Get Figma design here:](https://docs.flutter.dev/get-started/codelab)
+
+Designed by [Ashirwad Dutta](https://www.figma.com/@ashirbaddutta02)
