@@ -2,6 +2,7 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:weatherme_website/model.dart';
 
 class DesktopLayout extends StatelessWidget {
   DesktopLayout({super.key});
@@ -114,7 +115,9 @@ class DesktopLayout extends StatelessWidget {
                 ),
                 child: Center(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: size.width * 0.01,
+                    ),
                     child: TextField(
                       style: GoogleFonts.poppins(
                         color: Colors.black,
@@ -122,17 +125,25 @@ class DesktopLayout extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                       decoration: InputDecoration(
-                        border: InputBorder.none,
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                        ),
                         prefixIcon: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          padding: EdgeInsets.symmetric(
+                            vertical: size.width * 0.01,
+                            horizontal: size.width * 0.015,
+                          ),
                           child: Image.asset(
                             'assets/🦆 icon _search_.png',
-                            // height: 5,
+                            // height: 1,
+                            // width: size.width * 0.0007,
                           ),
                         ),
-                        contentPadding: EdgeInsets.symmetric(
-                          horizontal: size.width * 0.02,
-                          vertical: size.width * 0.0183,
+                        contentPadding: EdgeInsets.only(
+                          left: size.width * 0.02,
+                          right: size.width * 0.02,
+                          // top: size.width * 0.0183,
+                          bottom: size.width * 0.0183,
                         ),
                         hintText: 'Search location...',
                         hintStyle: GoogleFonts.poppins(
@@ -145,6 +156,10 @@ class DesktopLayout extends StatelessWidget {
                   ),
                 ),
               ),
+
+              //weather card
+              SizedBox(height: size.width * 0.03),
+
               SizedBox(
                 width: size.width,
                 height: size.width * 0.3257,
@@ -152,9 +167,39 @@ class DesktopLayout extends StatelessWidget {
                   controller: pageController,
                   scrollDirection: Axis.horizontal,
                   children: [
-                    WeatherCard(size: size),
-                    WeatherCard(size: size),
-                    WeatherCard(size: size),
+                    WeatherCard(
+                      size: size,
+                      weather: Weather(
+                        city: 'New York',
+                        temperature: 27,
+                        humidity: 99,
+                        windSpeed: 2,
+                        visibility: 8,
+                        airPressure: 1005,
+                      ),
+                    ),
+                    WeatherCard(
+                      size: size,
+                      weather: Weather(
+                        city: 'New York',
+                        temperature: 27,
+                        humidity: 99,
+                        windSpeed: 2,
+                        visibility: 8,
+                        airPressure: 1005,
+                      ),
+                    ),
+                    WeatherCard(
+                      size: size,
+                      weather: Weather(
+                        city: 'New York',
+                        temperature: 27,
+                        humidity: 99,
+                        windSpeed: 2,
+                        visibility: 8,
+                        airPressure: 1005,
+                      ),
+                    ),
                   ],
                 ),
 
@@ -227,13 +272,24 @@ class _TempUnitSwitchState extends State<TempUnitSwitch> {
 }
 
 class WeatherCard extends StatelessWidget {
-  const WeatherCard({required this.size, super.key});
+  const WeatherCard({
+    required this.size,
+    required this.weather,
+    super.key,
+  });
   final Size size;
+  final Weather weather;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Container(
+        padding: EdgeInsets.only(
+          top: size.width * 0.02,
+          bottom: size.width * 0.01,
+          right: size.width * 0.015,
+          left: size.width * 0.015,
+        ),
         margin: EdgeInsets.symmetric(horizontal: size.width * 0.03),
         // width: 817,
         // height: 425,
@@ -269,46 +325,151 @@ class WeatherCard extends StatelessWidget {
         ),
 
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
               children: [
                 Text(
-                  "London",
+                  weather.city,
                   style: GoogleFonts.poppins(
                     color: Colors.white,
-                    fontSize: size.width * 0.03,
-                    fontWeight: FontWeight.w400,
+                    fontSize: size.width * 0.022,
+                    fontWeight: FontWeight.w300,
                   ),
                 ),
-                const Icon(Icons.location_on_outlined,
-                    color: Colors.white, size: 20),
-              ],
-            ),
-            Row(
-              children: [
-                Image.asset('assets/🦆 icon _temperature_.png'),
-                Text(
-                  '27°C',
-                  style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontSize: size.width * 0.02,
-                    fontWeight: FontWeight.w400,
-                  ),
+                Icon(
+                  Icons.location_on_outlined,
+                  color: Colors.white,
+                  size: size.width * 0.022,
+                  weight: 0.1,
                 ),
-                Image.asset('assets/Cloud2.png'),
               ],
             ),
-            Row(
+            Column(
               children: [
-                Text(
-                  'Aug 23, Tue',
-                  style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontSize: size.width * 0.015,
-                    fontWeight: FontWeight.w400,
-                    decoration: TextDecoration.underline,
-                    decorationColor: Colors.white,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/🦆 icon _temperature_.png',
+                      height: size.width * 0.0457,
+                    ),
+                    SizedBox(width: size.width * 0.02),
+                    Text(
+                      '${weather.temperature.toInt()}°C',
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontSize: size.width * 0.0512,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    SizedBox(width: size.width * 0.015),
+                    Image.asset(
+                      'assets/Cloud2.png',
+                      height: size.width * 0.05,
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Aug 23, Tue',
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontSize: size.width * 0.015,
+                        fontWeight: FontWeight.w400,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            // SizedBox(height: size.width * 0.0001),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      'HUMIDITY',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width * 0.0146,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      '${weather.humidity}%',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width * 0.0161,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text(
+                      'VISIBILITY',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width * 0.0146,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      '${weather.visibility}km',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width * 0.0161,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text(
+                      'AIR PRESSURE',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width * 0.0146,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      '${weather.airPressure}hPa',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width * 0.0161,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text(
+                      'Wind',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width * 0.0146,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      '${weather.windSpeed.toInt()}mph',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width * 0.0161,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             )
